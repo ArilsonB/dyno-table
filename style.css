@@ -1,0 +1,32 @@
+/**
+* Dyno Table Base 1.0
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+dyno-table {
+  position: relative;
+  display: flex;
+  width: 500px;
+  height: 350px;
+  border: 1px solid #000;
+}
+
+dyno-table-header {}
+
+dyno-table-body {}
+
+dyno-table-footer {}
+
+dyno-table-top-controls {}
+
+dyno-table-bottom-controls {}
+
+dyno-table-row {}
+
+dyno-table-col {}
+
+/* dyno-table-col[] */
