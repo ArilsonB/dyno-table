@@ -1,7 +1,7 @@
 "use strict";
 
 class DynoTable extends HTMLElement {
-  construct(...args) {
+  constructor(...args) {
     super();
 
     //this.getAttribute
@@ -43,15 +43,28 @@ class DynoTable extends HTMLElement {
   async setFromUrl(url, ...configs) {
     let xhr = new XMLHttpRequest();
 
+    if (configs[0] && configs[0] instanceof Object) {
+      console.log('configs')
+    }
+
     xhr.open('POST', url);
+    xhr.send();
 
-    xhr.addEventListener("load", e => {
-      if (this.table.on.load != null && this.table.on.load instanceof Function)
-        this.table.on.load();
+    return new Promise((resolve, reject) => {
 
+      xhr.addEventListener("load", e => {
+        if (this.table.on.load != null && this.table.on.load instanceof Function)
+          this.table.on.load();
+
+      })
+
+      xhr.addEventListener("loadend", e => {
+        resolve(true)
+      })
     })
-    //if()
   }
+
+
 
   async setData(data = []) {
     this.table.data = data

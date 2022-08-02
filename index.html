@@ -15,6 +15,11 @@
   </dyno-table>
 
   <script src="dyno-table.js"></script>
+  <script>
+    const dyno = document.querySelector("dyno-table")
+
+    dyno.setFromUrl("./api.json", {})
+  </script>
 </body>
 
 </html>
