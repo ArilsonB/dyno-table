@@ -18,7 +18,8 @@ class DynoTable extends HTMLElement {
       columns: [],
       data: [],
       state: {
-        'loading': false
+        loading: false,
+        rendering: false
       },
       on: {
         load: null,
@@ -28,6 +29,10 @@ class DynoTable extends HTMLElement {
       },
       columnsSizes: []
     }
+
+    this.header = null;
+    this.body = null;
+    this.footer = null;
 
     return this;
   }
@@ -84,6 +89,20 @@ class DynoTable extends HTMLElement {
 
   }
 
+  async constructTable() {
+    this.header = document.createElement("dyno-header")
+    this.body = document.createElement("dyno-body")
+    this.footer = document.createElement("dyno-footer")
+
+    this.loadingIndicator = document.createElement("dyno-loadingIndicator")
+    this.loadingSpinner = document.createElement("dyno-loadingSpinner")
+
+    this.appendChild(this.header)
+    this.appendChild(this.body)
+    this.appendChild(this.footer)
+
+  }
+
   async loadData() {
 
 
@@ -95,6 +114,8 @@ class DynoTable extends HTMLElement {
   connectedCallback() {
     //console.log('Custom square element added to page.');
     //updateStyle(this);
+
+    this.constructTable();
   }
 
   disconnectedCallback() {
